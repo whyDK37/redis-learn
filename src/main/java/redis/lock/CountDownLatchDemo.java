@@ -14,10 +14,10 @@ public class CountDownLatchDemo {
 // Sync and Async API
         final RedissonClient redisson = Redisson.create(config);
         final RCountDownLatch latch = redisson.getCountDownLatch("anyCountDownLatch");
-        latch.trySetCount(1);
 
-        latch.await();
-        System.out.println("start to run");
-
+        while (true) {
+            latch.trySetCount(1);
+            latch.await();
+        }
     }
 }

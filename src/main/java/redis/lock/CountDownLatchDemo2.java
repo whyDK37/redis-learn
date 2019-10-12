@@ -17,7 +17,12 @@ public class CountDownLatchDemo2 {
 
 
 // in other thread or other JVM
-        latch.countDown();
-        System.out.println("do count down." + latch.getCount());
+        long start = System.currentTimeMillis();
+        while (true) {
+            latch.countDown();
+            long end = System.currentTimeMillis();
+            System.out.println(end - start);
+            start = end;
+        }
     }
 }
