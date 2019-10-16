@@ -1,10 +1,7 @@
 package redis;
 
 import org.redisson.Redisson;
-import org.redisson.api.RLock;
-import org.redisson.api.RedissonClient;
-import org.redisson.api.RedissonReactiveClient;
-import org.redisson.api.RedissonRxClient;
+import org.redisson.api.*;
 import org.redisson.config.Config;
 
 import java.util.concurrent.TimeUnit;
@@ -30,7 +27,11 @@ public class RedisDemo {
 // Reactive API
         RedissonReactiveClient redissonReactive = Redisson.createReactive(config);
 
+        RLockReactive rLockReactive = redissonReactive.getLock("anyLock");
+
+
 // RxJava2 API
         RedissonRxClient redissonRx = Redisson.createRx(config);
+        RLockRx rLockRx = redissonRx.getLock("anyLock");
     }
 }
