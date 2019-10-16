@@ -18,10 +18,10 @@ public class RRateLimiterDemo {
 // Sync and Async API
         final RedissonClient redisson = Redisson.create(config);
 
-        RRateLimiter limiter = redisson.getRateLimiter("rl");
+        RRateLimiter limiter = redisson.getRateLimiter("rl2");
 // Initialization required only once.
 // 5 permits per 2 seconds
-        System.out.println("trySetRate:" + limiter.trySetRate(RateType.OVERALL, 1, 1, RateIntervalUnit.SECONDS));
+        System.out.println("trySetRate:" + limiter.trySetRate(RateType.OVERALL, 20, 1, RateIntervalUnit.SECONDS));
 
 // ...
 
