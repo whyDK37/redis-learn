@@ -12,7 +12,7 @@ public class RedisDemo {
         Config config = new Config();
         config.useSingleServer().setAddress("redis://127.0.0.1:6379");
 
-// Sync and Async API
+        // Sync and Async API
         RedissonClient redisson = Redisson.create(config);
 
         RLock lock = redisson.getLock("anyLock");
