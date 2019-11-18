@@ -1,11 +1,11 @@
-package redis.lock;
+package redisson.lock;
 
 import org.redisson.Redisson;
 import org.redisson.api.RCountDownLatch;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 
-public class CountDownLatchDemo2 {
+public class CountDownLatchDemo {
 
     public static void main(String[] args) throws InterruptedException {
         Config config = new Config();
@@ -15,14 +15,9 @@ public class CountDownLatchDemo2 {
         final RedissonClient redisson = Redisson.create(config);
         final RCountDownLatch latch = redisson.getCountDownLatch("anyCountDownLatch");
 
-
-// in other thread or other JVM
-        long start = System.currentTimeMillis();
         while (true) {
-            latch.countDown();
-            long end = System.currentTimeMillis();
-            System.out.println(end - start);
-            start = end;
+            latch.trySetCount(1);
+            latch.await();
         }
     }
 }

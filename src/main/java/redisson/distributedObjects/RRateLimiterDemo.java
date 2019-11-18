@@ -1,4 +1,4 @@
-package redis.DistributedObjects;
+package redisson.distributedObjects;
 
 import org.redisson.Redisson;
 import org.redisson.api.RRateLimiter;

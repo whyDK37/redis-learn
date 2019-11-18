@@ -1,4 +1,4 @@
-package redis;
+package redisson;
 
 import org.redisson.Redisson;
 import org.redisson.api.*;
